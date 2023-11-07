@@ -1,23 +1,29 @@
 window.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("form");
-  const deleteInput = document.getElementById("delete");
+  const deleteBtn = document.getElementById("delete");
   form.onsubmit = saveInput;
-  deleteInput.onclick = () => {
-    localStorage.removeItem("name");
-  };
+  deleteBtn.onclick = deleteInput;
 });
 
 const saveInput = (event) => {
   event.preventDefault();
   const txtInput = document.getElementById("name");
   localStorage.setItem("name", txtInput.value);
-  document.getElementById("output").textContent = localStorage.getItem("name");
+  storegedName = localStorage.getItem("name");
+  document.getElementById("output").innerText = storegedName;
 };
-
 const savedName = localStorage.getItem("name");
 if (savedName) {
-  document.getElementById("output").textContent = savedName;
+  document.getElementById("output").innerText = savedName;
 }
+
+const deleteInput = (event) => {
+  localStorage.removeItem("name");
+  let saved = document.getElementById("output");
+  if (saved) {
+    saved.innerText = "";
+  }
+};
 
 // Counter
 
@@ -25,7 +31,7 @@ function updateCounter() {
   let seconds = sessionStorage.getItem("counterSeconds");
   seconds++;
   sessionStorage.setItem("counterSeconds", seconds);
-  document.getElementById("counter").textContent = seconds + " secondi";
+  document.getElementById("counter").innerText = seconds + " secondi";
 }
 
 setInterval(updateCounter, 1000);
