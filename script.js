@@ -28,9 +28,9 @@ const deleteInput = (event) => {
 // Counter
 
 function updateCounter() {
-  let seconds = sessionStorage.getItem("counterSeconds");
+  let seconds = sessionStorage.getItem("timePassed");
   seconds++;
-  sessionStorage.setItem("counterSeconds", seconds);
+  sessionStorage.setItem("timePassed", seconds);
   document.getElementById("counter").innerText = seconds + " secondi";
 }
 
